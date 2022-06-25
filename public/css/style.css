@@ -1,0 +1,139 @@
+body {
+    height: auto;
+    max-width: 1920px;
+    padding: 3% 5%;
+    align-items: baseline;
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: stretch;
+    
+}
+.header {
+    background-color: aliceblue;
+    width: 100%;
+    height: 20%;
+
+    border-radius: 20px;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.menu a:hover {
+    background-color: rgb(210, 209, 209);
+}
+.news-body {
+    padding: 5% 5%;
+    width: 100%;
+    
+}
+.news {
+    padding: 2%;
+    margin: 2%;
+    border: 6px groove black;
+    border-image: repeating-linear-gradient(45deg, turquoise, pink 4%) 1;
+   
+}
+.news-image {
+    max-width:30%;
+    max-height:30%;
+}
+
+
+/* style for Registration */
+.register-form {
+    align-items: center;
+    display:inline;
+}
+
+.form-group {
+   width: 100%;
+   padding: 2%;
+}
+
+.form-control{
+    margin: 2%;
+}
+
+.btn-confirm {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 16px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.btn-negative{
+    background-color: #aa2004;
+    color: white;
+    padding: 14px 16px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+input[type=text], input[type=password], input[type=email] {
+  width: 100%;
+  padding: 12px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* For gallery view. Taken from W3 School example for photo gallery*/
+div.gallery {
+    border: 1px solid #ccc;
+  }
+  
+  div.gallery:hover {
+    border: 1px solid #777;
+  }
+  
+  div.gallery img {
+    width: 100%;
+    height: auto;
+  }
+  
+  div.desc {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .responsive {
+    padding: 0 6px;
+    float: left;
+    width: 24.99999%;
+  }
+  
+  @media only screen and (max-width: 700px) {
+    .responsive {
+      width: 49.99999%;
+      margin: 6px 0;
+    }
+  }
+  
+  @media only screen and (max-width: 500px) {
+    .responsive {
+      width: 100%;
+    }
+  }
+  
+  .clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
