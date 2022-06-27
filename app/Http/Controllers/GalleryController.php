@@ -14,8 +14,8 @@ class GalleryController extends Controller
             // If you are not logged in you can only see public images
             $privacy = 2;
         }
+
         
-        $imageArray = Image::getImages($privacy);
 
         return view('gallery');
     }

@@ -20,6 +20,15 @@ class ImageController extends Controller
 
     public function uploadImage() {
         // Check alt value and set it to none if it is empty
+
+        
+        $this->validate(request(), [
+            'title' => 'required|min:2|string|max:50'
+        ]);
+
+
+        
+
         $alt = strip_tags(request('alt'));
         if(!isset($alt) || empty($alt)) {
             $alt = "None";

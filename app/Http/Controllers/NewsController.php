@@ -24,6 +24,14 @@ class NewsController extends Controller
         // SQLi is also prevented because query function in Laravel uses prepared statements
         // File is also validated. Not 100% perfect. Pretty sure i could add some PHP into the metafields of the image. But i disabled PHP for images directory
         // So... no problems
+
+        $this->validate(request(), [
+            'title' => 'required|min:2|string|max:50',
+            'content' => 'required|min:2|string|max:1000',
+            'exp' => 'required'
+        ]);
+
+
         $newsTitle = strip_tags(request('title'));
         $newsContent = strip_tags(request('content'));
         $exp = strip_tags(request('exp'));
@@ -31,6 +39,8 @@ class NewsController extends Controller
         if(!isset($alt) || empty($alt)) {
             $alt = "None";
         }
+
+
 
         $validatedData = request()->validate([
             'img' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
