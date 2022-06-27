@@ -12,8 +12,10 @@ class GalleryController extends Controller
     {
         if(!auth()->check()) {
             // If you are not logged in you can only see public images
-            $this->privacy = 2;
+            $privacy = 2;
         }
+        
+        $imageArray = Image::getImages($privacy);
 
         return view('gallery');
     }

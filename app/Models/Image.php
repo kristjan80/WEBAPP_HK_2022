@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
-
+// Datamodel for Image. Deals with Image validation and storing.
 
 class Image extends Model
 {
@@ -53,7 +53,7 @@ class Image extends Model
         }
     }
 
-    public function getImages($priv) {
+    public static function getImages($priv) {
         $tableExist=Schema::connection('mysql')->hasTable('photos');
         if($tableExist){
             $res = DB::connection('mysql')->table('photos')->select('*')->where('privacy','>=',$priv);

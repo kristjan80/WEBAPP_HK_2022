@@ -15,10 +15,9 @@ class LoginController extends Controller
     
     public function authenticate()
     {
+        // Check if the email and password values are correct. If not, 
         if (auth()->attempt(request(['email', 'password'])) == false) {
-            return back()->withErrors([
-                'message' => 'The email or password is incorrect, please try again'
-            ]);
+            return redirect('/login')->with('error',"Incorrect credentials");
         }
         
         return redirect()->to('/');

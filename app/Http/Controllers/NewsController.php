@@ -20,7 +20,10 @@ class NewsController extends Controller
     }
     
     public function addNews() {
-
+        // Get input values and strip them of tags for security reasons. Makes XSS pretty much impossible.
+        // SQLi is also prevented because query function in Laravel uses prepared statements
+        // File is also validated. Not 100% perfect. Pretty sure i could add some PHP into the metafields of the image. But i disabled PHP for images directory
+        // So... no problems
         $newsTitle = strip_tags(request('title'));
         $newsContent = strip_tags(request('content'));
         $exp = strip_tags(request('exp'));
@@ -36,30 +39,31 @@ class NewsController extends Controller
     
            $imgName = strip_tags(time().'.'.request()->file('img')->getClientOriginalName());
 
-    
+           // Create new images object based on the model. Validate the sent in values (are there any for example) 
+           // After that, if there is a image, create the object for that, validate and store
+           // Then add everything to database aswell.
            $news = new News($newsTitle,$newsContent, $exp);
            if($news->validate()) {
                 $image = new Image($imgName,request()->file("img"),$alt);
                 if($image->validate()) {
                     $image->store();
                     $news->store($image);
-                    return redirect('addnews')->with('status', 'News was added');
+                    return redirect('addnews')->with('message', 'News article was added');
                 }
                 else {
                     // No photo
-                    return redirect('addnews')->with('status', 'News was added without an image');
+                    return redirect('addnews')->with('message', 'News article was added without an image');
                 }
                 
            }else {
-                return back()->withErrors([
-                    'message' => 'Check your input!'
-                ]);
+                return redirect('/addnews')->with('error','Check your input!');
            }
            
 
     }
 
     public function getNews() {
+        // Get latest 5 news and display them using the template.
         $newsArray = News::queryNews();
 
         return view('home',compact('newsArray'));

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 static $PATH = "public/img";
 
+// Data model for news. Holds news values, validates, and deals with storing the data to database
 class News extends Model
 {
     use HasFactory;
@@ -38,7 +39,7 @@ class News extends Model
         
         $tableExist=Schema::connection('mysql')->hasTable('news');
         if($tableExist){
-            $res = DB::connection('mysql')->table('news')->select('*')->join('users', 'news.userid','=','users.id')->leftJoin
+            $res = DB::connection('mysql')->table('news')->select('*')->leftJoin('users', 'news.userid','=','users.id')->leftJoin
             ('photos','photos.id','=','news.photoid')->orWhereNull('news.deleted')->orderBy('added', 'desc')->limit($count)->get();
         }
         return $res;

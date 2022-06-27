@@ -15,13 +15,11 @@
                 <label for="priv2">2</label>
                 <input type="radio" class="form-control" id="priv2" name="priv" value="2">
                 <br>
-                <label for="img">Image</label>
+                <label for="img">Image</label><br>
                 <input type="file" class="input-general" id="img" name="img">
 
                 <div class="form-group">
-                    <button style="cursor:pointer" type="submit" class="btn-confirm">Submit</button>
-        
-                    <button style="cursor:pointer" type="submit" class="btn-negative" id="back" name="back">Back</button>
+                    <button style="cursor:pointer" type="submit" class="btn-confirm">Upload</button>
                 </div>
             </div>
           
